@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/api/register-user',UserController::class);
+Route::resource('/api/users',UserController::class);
