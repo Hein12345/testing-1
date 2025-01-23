@@ -14,7 +14,11 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return $users;
+        return response()->json([
+            'users'=>$users,
+            'message'=>'success',
+            'code'=>200
+        ]);
     }
 
     /**
@@ -30,7 +34,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->name;
+        $user->email= $request->email;
+        $user->password = $request->password;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->role = $request->role;
+        $user->dob = $request->dob;
+        $user->save();
+
+        return response()->json([
+            'message' => 'user is successfully stored.',
+        ]);
+
+        
     }
 
     /**
